@@ -14,5 +14,5 @@ $loginAccessVerifier = new Verifier(
     verifier: fn(bool $toReturn):bool => $toReturn,
     onSuccess: function(string $sentence):void{ echo $sentence; }
 );
-$loginAccessVerifier->execVerification(verifierArgs: [true],onSuccessArgs: ["sabo framework"]);
+$loginAccessVerifier->execVerification(verifierArgs: [true],onSuccessArgs: ["eagle framework"]);
 </code-block>

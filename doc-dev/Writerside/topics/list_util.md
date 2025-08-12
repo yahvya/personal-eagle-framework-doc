@@ -5,7 +5,7 @@
 La class implémente les interfaces <code>Countable</code> <code>Iterator</code> <code>Arrayable</code> qui permettent 
 
 - l'itération via boucle <code>foreach</code>
-    <code-block lang="php">foreach(new SaboList(datas: ["sabo","framework"]) as $element) var_dump($element);</code-block>
+    <code-block lang="php">foreach(new SaboList(datas: ["eagle","framework"]) as $element) var_dump($element);</code-block>
 - récupération du nombre d'éléments via la méthode <code>count</code>
 
 Les méthodes propres à la class permettent l'accès aux données accompagné de fonctions de recherche

@@ -103,7 +103,7 @@ $builder
     ->cond(
         new MysqlCondition(condGetter: "username",comparator: MysqlComparator::EQUAL(),conditionValue: "yahvya"),
         MysqlCondSeparator::AND(),
-        new MysqlCondition(condGetter: "email",comparator: MysqlComparator::EQUAL(),conditionValue: "sabo.framework@github.com"),
+        new MysqlCondition(condGetter: "email",comparator: MysqlComparator::EQUAL(),conditionValue: "eagle.framework@github.com"),
     );
 </code-block>
 

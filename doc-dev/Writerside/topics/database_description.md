@@ -12,7 +12,7 @@ La configuration de la base de données se base sur le fichier d'environnement <
 
 ## Les models
 
-> Un model dans le contexte de *sabo* est une class permettant de représenter sous forme de code PHP une table / une vue de la base de données. Cette description passe via une [liste d'attributs](#les-attributs-de-description).
+> Un model dans le contexte de *eagle* est une class permettant de représenter sous forme de code PHP une table / une vue de la base de données. Cette description passe via une [liste d'attributs](#les-attributs-de-description).
 
 Les models sont chargés par défaut dans le dossier <code>src/models</code> et extends de la class <code>CustomModel</code> servant d'intermédiaire avec le framework.
 

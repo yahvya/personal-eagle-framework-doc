@@ -4,12 +4,12 @@
 
 <note>Un projet comporte deux parties distinctes, le code du framework ainsi que le code source de l'utilisateur.</note>
 
-- <code>sabo-core</code> dossier contenant l'entièreté du framework
+- <code>EagleCore</code> dossier contenant l'entièreté du framework
 - <code>src</code> dossier contenant les sources utilisateur
 - <code>.htaccess</code> fichier servant à la redirection de routing
 - <code>composer.json + composer.lock</code> fichiers du gestionnaire composer
   <note>Gestion de l'auto-loading et des dépendances</note>
-- <code>sabo</code> utilitaire de ligne de commandes <note>ce fichier est un fichier php sans l'extension</note>
+- <code>eagle</code> utilitaire de ligne de commandes <note>ce fichier est un fichier php sans l'extension</note>
 
 ## Focus sur le dossier *src*
 

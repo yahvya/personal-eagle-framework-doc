@@ -6,7 +6,7 @@
 <tab title="Format procédure">
 <procedure title="Première étape">
     <step>Accès à un lien de l'application par l'utilisateur</step>
-    <step>redirection via <code>.htaccess</code> sur le point d'entrée <code>sabo-core/index.php</code></step>
+    <step>redirection via <code>.htaccess</code> sur le point d'entrée <code>EagleCore/index.php</code></step>
     <step>Lancement de l'application via <code>Application::launch</code></step>
     <step>
         <p>Insertion et vérification des configurations dans l'ordre</p>
@@ -49,7 +49,7 @@ step_one: Première étape{
         }
     }
     ht_access_action: \.htaccess{
-        Redirection vers le point d'entrée\n'sabo_core/index\.php'{
+        Redirection vers le point d'entrée\nEagleCore/index\.php'{
             shape: text
         }
     }
@@ -134,8 +134,8 @@ use SaboCore\Routing\Routes\RouteManager;
 RouteManager::registerRoute(
     Route::get(
         link: "/",
-        toExecute: fn():BladeResponse => new BladeResponse("sabo",["websiteLink" => "https://yahvya.github.io/sabo-final-doc/"]),
-        routeName: "sabo"
+        toExecute: fn():BladeResponse => new BladeResponse("eagle",["websiteLink" => "https://yahvya.github.io/eagle-final-doc/"]),
+        routeName: "eagle"
     )
 );
 </code-block>
@@ -155,13 +155,13 @@ RouteManager::registerGroup(
     routes: [
         Route::get(
             link: "/",
-            toExecute: fn():BladeResponse => new BladeResponse("sabo",["websiteLink" => "https://yahvya.github.io/sabo-final-doc/"]),
-            routeName: "sabo"
+            toExecute: fn():BladeResponse => new BladeResponse("eagle",["websiteLink" => "https://yahvya.github.io/eagle-final-doc/"]),
+            routeName: "eagle"
         ),
         Route::get(
             link: "/test",
-            toExecute: fn():BladeResponse => new BladeResponse("sabo",["websiteLink" => "https://yahvya.github.io/sabo-final-doc/"]),
-            routeName: "sabo"
+            toExecute: fn():BladeResponse => new BladeResponse("eagle",["websiteLink" => "https://yahvya.github.io/eagle-final-doc/"]),
+            routeName: "eagle"
         )
     ],
     groupAccessVerifiers: []

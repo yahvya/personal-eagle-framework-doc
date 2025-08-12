@@ -23,7 +23,7 @@ La class est abstraite de base, l'idée dans son implémentation est de créer u
 <code-block lang="php">
 class SaboOnlineApi extends SaboApi{
     public function __construct(){
-        parent::construct(apiUrlPrefix: "https://sabo-false-url.com/api");
+        parent::construct(apiUrlPrefix: "https://eagle-false-url.com/api");
     }
 }
 </code-block>

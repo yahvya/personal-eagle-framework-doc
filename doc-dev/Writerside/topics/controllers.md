@@ -17,7 +17,7 @@ use SaboCore\Routing\Response\JsonResponse;
 use SaboCore\Routing\Request\Request;
 class MyController extends CustomController{
     public function showHomePage():BladeResponse{
-        return new BladeResponse(pathFromViews: "sabo",datas: ["websiteLink" => "https://yahvya.github.io/sabo-final-doc/"]);
+        return new BladeResponse(pathFromViews: "eagle",datas: ["websiteLink" => "https://yahvya.github.io/eagle-final-doc/"]);
     }
     public function getDatasOf(Request $requestManager,string $username):JsonResponse{
         return new JsonResponse(json: ["method" => $requestManager->getMethod(),"username" => $username]);

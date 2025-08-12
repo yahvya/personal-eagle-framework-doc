@@ -15,7 +15,7 @@ La class <code>SaboCore\Utils\Mailer\SaboMailer></code> permet l'envoi de mail v
 <code-block lang="php">
 $mailer = new SaboMailer();
 
-$sendSuccess = $mailer->sendBasicMail(subject: "Sabo framework",mailContent: "Mail content",recipients: ["sabo.framework@github.com"]);
+$sendSuccess = $mailer->sendBasicMail(subject: "Sabo framework",mailContent: "Mail content",recipients: ["eagle.framework@github.com"]);
 </code-block>
 
 ## Envoi de mail via template
@@ -34,7 +34,7 @@ Le framework en fourni deux par défaut permettant de rendre respectivement des 
 $mailer = new SaboMailer();
 $sendSuccess = $mailer->sendMailFromTemplate(
     subject: "Sabo framework",
-    recipients: ["sabo.framework@github.com"],
+    recipients: ["eagle.framework@github.com"],
     templateProvider: new BladeMailProvider(
         templatePath: "mail", # src/views/mail/mail.blade.php
         altContent: "Contenu alternatif",
@@ -43,7 +43,7 @@ $sendSuccess = $mailer->sendMailFromTemplate(
 );
 $sendSuccess = $mailer->sendMailFromTemplate(
     subject: "Sabo framework",
-    recipients: ["sabo.framework@github.com"],
+    recipients: ["eagle.framework@github.com"],
     templateProvider: new TwigMailProvider(
         templatePath: "mail.twig", # src/views/mail/mail.twig
         altContent: "Contenu alternatif",

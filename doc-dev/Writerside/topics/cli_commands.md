@@ -4,9 +4,9 @@
 
 ## Utilisation
 
-L'utilitaire se base sur un fichier PHP sans extension <code>sabo</code>. 
+L'utilitaire se base sur un fichier PHP sans extension <code>eagle</code>.
 
-Il peut donc être lancé via la commande PHP <code>php sabo nom_de_la_commande [options de la commande]</code>
+Il peut donc être lancé via la commande PHP <code>php eagle nom_de_la_commande [options de la commande]</code>
 
 ## Liste des commandes par défaut
 
@@ -20,5 +20,5 @@ Il peut donc être lancé via la commande PHP <code>php sabo nom_de_la_commande 
 
 <procedure>
 <step>Définir une class qui extends <code>SaboCore\Cli\Commands\SaboCommand</code></step>
-<step>Enregistrer la commande dans le fichier sabo en suivant le même model que les commandes précédentes</step>
+<step>Enregistrer la commande dans le fichier eagle en suivant le même model que les commandes précédentes</step>
 </procedure>

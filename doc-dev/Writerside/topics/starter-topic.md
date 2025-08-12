@@ -1,12 +1,15 @@
 # Framework Sabo
 
 <img 
-    src="sabo-icon.ico" 
+    src="framework-icon.ico" 
     alt="Sabo"
     width="70"
 />
 
 > Eagle est un **framework *PHP*** designé pour ressentir le fait d'écrire du PHP malgré l'utilisation d'un Framework.
+>
+
+<warning>Une nouvelle version de la documentation est en cours de rédaction, dû aux changements effectués sur le framework.</warning>
 
 ## Description rapide
 
@@ -18,5 +21,5 @@
 
 > Le framework a été créé et maintenu par **Yahaya Bathily**, [lien du profil Github](https://github.com/yahvya)
 
-*Ce projet est parti d'un simple test de compétence personnel avant de se développer :)*
+*Écrivez du PHP avant tout ;)*
 
