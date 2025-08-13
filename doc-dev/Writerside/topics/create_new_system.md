@@ -4,7 +4,7 @@
 
 <procedure title="Etapes de création d'un système">
     <step>
-        Créer une class qui extends <code>SaboCore\Database\Providers\DatabaseProvider</code>. 
+        Créer une class qui extends <code>EagleCore\Database\Providers\DatabaseProvider</code>. 
         Cette class permettra a minima d'initialiser le système dans le cycle de vie du framework via la méthode abstraite <code>initDatabase</code>.
         Cette méthode reçoit en paramètre une configuration provenant de l'environnement qui sera traité plus bas.
         <note>Il est recommandé d'implémenter cette class en utilisant le pattern <a href="https://fr.wikipedia.org/wiki/Singleton_(patron_de_conception)">singleton</a>.</note>
@@ -18,7 +18,7 @@
         </ul>
     </step>
     <step>
-        La suite de l'implémentation est libre en fonction du fonctionnement, toutefois des class et interfaces de structure sont prévus dans le namespace <code>SaboCore\Database\System</code> dans le chemin de même nom.
+        La suite de l'implémentation est libre en fonction du fonctionnement, toutefois des class et interfaces de structure sont prévus dans le namespace <code>EagleCore\Database\System</code> dans le chemin de même nom.
         <ul>
             <li><code>DatabaseModel</code> permettant de définir la structure d'un model ainsi que des méthodes natives attendues</li>
             <li><code>DatabaseCondition|DatabaseCondSeparator|DatabaseComparator</code> permettant l'écriture de conditions de recherche via méthodes.</li>
@@ -40,6 +40,7 @@ Cet exemple va se baser sur un système fonctionnant à base d'un seul document 
 class JsonSystemProvider extends DatabaseProvider{
     protected static array|null $jsonDocument = null;
     protected static string|null $documentPathFromStorage = null; 
+
     #[Override]
     public function initDatabase(Config $providerConfig):void{
         $providerConfig->checkConfigs("documentPathFromStorage");
@@ -49,6 +50,7 @@ class JsonSystemProvider extends DatabaseProvider{
             return;
         self::$jsonDocument = json_decode(json: $fileContent,associative: true);
     }
+
     #[Override]
     public function getCon():array|null{
         return self::$jsonDocument;

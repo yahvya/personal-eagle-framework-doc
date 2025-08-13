@@ -1,6 +1,6 @@
 # Les éléments de configuration
 
-> Le dossier **src/configs** contient différents fichiers de configurations, permettant de gérer du framework, aux fonctions globales de l'application.
+> Le dossier **configs** contient différents fichiers de configurations, permettant de gérer du framework, aux fonctions globales de l'application.
 
 
 ## [functions.php]
@@ -19,7 +19,7 @@
   </code-block>
 - <code>generateCsrf</code> génère un code csrf et fourni le gestionnaire créé
     <code-block lang="php">
-        generateCsrf()->getToken();
+        generateCsrf()->token;
     </code-block>
 - <code>checkCsrf</code> vérifie un token csrf et retourne son état de validité
     <code-block lang="php">

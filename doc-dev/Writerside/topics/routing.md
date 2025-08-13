@@ -94,7 +94,7 @@ step_one -> step_two
 
 ## Enregistrement des routes
 
-> L'enregistrement des routes passe par le dossier **src/routes**. 
+> L'enregistrement des routes passe par le dossier **Src/routes**. 
 
 - <code>routes.php</code> fichier utilisé par le framework permettant d'inclure les documents d'enregistrement d'api et web
     <warning>Il n'est pas recommandé de le modifier bien qu'il puisse servir à l'enregistrement des routes</warning>
@@ -105,8 +105,11 @@ step_one -> step_two
 
 <code-block lang="php">
 &lt;?php
+
 # routes d'api
-use SaboCore\Routing\Routes\RouteManager;
+
+use EagleCore\Routing\Routes\RouteManager;
+
 RouteManager::registerGroup(
     linksPrefix: "/api/:apiVersion",
     routes: [],
@@ -127,16 +130,18 @@ RouteManager::registerGroup(
 
 <code-block lang="php">
 &lt;?php
-// routes web
-use SaboCore\Routing\Response\BladeResponse;
-use SaboCore\Routing\Routes\Route;
-use SaboCore\Routing\Routes\RouteManager;
+
+use Yahvya\EagleFramework\Routing\Response\BladeResponse;
+use Yahvya\EagleFramework\Routing\Routes\RouteManager;
+
 RouteManager::registerRoute(
-    Route::get(
-        link: "/",
-        toExecute: fn():BladeResponse => new BladeResponse("eagle",["websiteLink" => "https://yahvya.github.io/eagle-final-doc/"]),
-        routeName: "eagle"
-    )
+    requestMethod: "GET",
+    link: "/",
+    toExecute: fn(): BladeResponse => new BladeResponse(
+        pathFromViews: "eagle",
+        datas: ["websiteLink" => "https://yahvya.github.io/personal-eagle-framework-doc/starter-topic.html"]
+    ),
+    routeName: "eagle"
 );
 </code-block>
 
@@ -146,10 +151,13 @@ RouteManager::registerRoute(
 
 <code-block lang="php">
 &lt;?php
+
 # routes d'api
-use SaboCore\Routing\Routes\RouteManager;
-use SaboCore\Routing\Response\BladeResponse;
-use SaboCore\Routing\Routes\Route;
+
+use EagleCore\Routing\Routes\RouteManager;
+use EagleCore\Routing\Response\BladeResponse;
+use EagleCore\Routing\Routes\Route;
+
 RouteManager::registerGroup(
     linksPrefix: "/api",
     routes: [

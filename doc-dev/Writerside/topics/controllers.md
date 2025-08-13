@@ -2,7 +2,7 @@
 
 > Les controllers sont des class permettant d'éffectuer les actions de traitement à l'accès de liens précis.
 
-Ils sont situés par défaut dans le dossier <code>src/controllers</code> sous la méthode de chargement <code>psr-4</code>.
+Ils sont situés par défaut dans le dossier <code>Src/Controllers</code> sous la méthode de chargement <code>psr-4</code>.
 
 ## Définition
 
@@ -11,14 +11,18 @@ Cette classe sert d'intermédiaire entre le framework et l'utilisateur.
 
 <code-block lang="php">
 &lt;?php
+
 namespace Controllers;
-use SaboCore\Routing\Response\BladeResponse;
-use SaboCore\Routing\Response\JsonResponse;
-use SaboCore\Routing\Request\Request;
+
+use EagleCore\Routing\Response\BladeResponse;
+use EagleCore\Routing\Response\JsonResponse;
+use EagleCore\Routing\Request\Request;
+
 class MyController extends CustomController{
     public function showHomePage():BladeResponse{
         return new BladeResponse(pathFromViews: "eagle",datas: ["websiteLink" => "https://yahvya.github.io/eagle-final-doc/"]);
     }
+
     public function getDatasOf(Request $requestManager,string $username):JsonResponse{
         return new JsonResponse(json: ["method" => $requestManager->getMethod(),"username" => $username]);
     }
@@ -31,9 +35,11 @@ Les controllers peuvent être associés aux liens dans la définition des routes
 
 <code-block lang="php">
 &lt;?php
+
 use Controllers\MyController;
-use SaboCore\Routing\Routes\Route;
-use SaboCore\Routing\Routes\RouteManager;
+use EagleCore\Routing\Routes\Route;
+use EagleCore\Routing\Routes\RouteManager;
+
 RouteManager::registerRoute(
     route: Route::get(
         link: "/",
@@ -41,6 +47,7 @@ RouteManager::registerRoute(
         routeName: "app.home"
     )
 );
+
 RouteManager::registerRoute(
     route: Route::get(
         link: "/datas/:username",

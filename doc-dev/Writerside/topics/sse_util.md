@@ -8,7 +8,7 @@ L'utilitaire sse permet offre des fonctions de configuration de d'envoi de messa
 
 ## Utilisation
 
-L'utilitaire associé est la class <code>SaboCore\Utils\Sse</code>
+L'utilitaire associé est la class <code>EagleCore\Utils\Sse</code>
 
 *Cet exemple est à but représentatif des possibilités*
 
@@ -17,16 +17,16 @@ $resourceManager = new ResourceManager();
 $resourceManager
     ->setResource(key: "userToNotifyId",resource: 1)
     ->setResource(key: "notifyWith",resource: NotificationConfig::MESSAGE);
-$sseManager = new SaboSee(
+$sseManager = new EagleSee(
     resourceManager: $resourceManager,
     defaultSleepTimeSec: 10 # temps entre chaque tour de boucle
 );
 $sseManager->launch(
-    executor: function(SaboSse $manager):void{
+    executor: function(EagleSse $manager):void{
         if(condition)
             $manager->sendEvent(eventName: "notification",eventDatas: $manager->getResourceManager()->getResource(key: "userToNotifyId"));
     }, # Callable de gestion à chaque tour de boucle
-    stopVerifier: fn(SaboSse $manager):bool => condition_stop, # fonction renvoyant si le sse doit s'arrêter
+    stopVerifier: fn(EagleSse $manager):bool => condition_stop, # fonction renvoyant si le sse doit s'arrêter
     stopEventName: "endOfNotifications" # nom de l'évènement envoyé en cas d'arrêt
 );
 </code-block>

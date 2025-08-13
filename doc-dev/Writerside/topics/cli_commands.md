@@ -19,6 +19,6 @@ Il peut donc être lancé via la commande PHP <code>php eagle nom_de_la_commande
 ## Créer une commande
 
 <procedure>
-<step>Définir une class qui extends <code>SaboCore\Cli\Commands\SaboCommand</code></step>
+<step>Définir une class qui extends <code>EagleCore\Cli\Commands\EagleCommand</code></step>
 <step>Enregistrer la commande dans le fichier eagle en suivant le même model que les commandes précédentes</step>
 </procedure>

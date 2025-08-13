@@ -77,6 +77,6 @@ Liste des en-têtes par défaut défini par le framework :
 - <code>setContent</code> permet de mettre à jour le contenu textuel à rendre
 - <code>setResponseCode</code> permet de mettre à jour le code de retour <code>HTTP</code>
   
-    Cette fonction utilise l'énumération <code>SaboCore\Routing\Response\ResponseCode</code>
+    Cette fonction utilise l'énumération <code>EagleCore\Routing\Response\ResponseCode</code>
 
 <warning>Il n'est pas recommandé de mettre à jour manuellement le rendu textuel</warning>

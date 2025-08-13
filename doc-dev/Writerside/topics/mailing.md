@@ -2,7 +2,7 @@
 
 > Parmi les utilitaires, le framework embarque un utilitaire de mail crée autour de la class <code>PHPMailer</code>
 
-La class <code>SaboCore\Utils\Mailer\SaboMailer></code> permet l'envoi de mail via templates (blade, twig) en plus des fonctionnalités natives offertes par <code>PHPMailer</code>
+La class <code>EagleCore\Utils\Mailer\EagleMailer></code> permet l'envoi de mail via templates (blade, twig) en plus des fonctionnalités natives offertes par <code>PHPMailer</code>
 
 ## Configuration du mailer
 
@@ -13,9 +13,9 @@ La class <code>SaboCore\Utils\Mailer\SaboMailer></code> permet l'envoi de mail v
 > La fonction <code>sendBasicMail</code> permet l'envoi d'un mail classique, il prend le sujet, le contenu textuel ainsi que les destinataires du mail.
 
 <code-block lang="php">
-$mailer = new SaboMailer();
+$mailer = new EagleMailer();
 
-$sendSuccess = $mailer->sendBasicMail(subject: "Sabo framework",mailContent: "Mail content",recipients: ["eagle.framework@github.com"]);
+$sendSuccess = $mailer->sendBasicMail(subject: "Eagle framework",mailContent: "Mail content",recipients: ["eagle.framework@github.com"]);
 </code-block>
 
 ## Envoi de mail via template
@@ -24,28 +24,28 @@ $sendSuccess = $mailer->sendBasicMail(subject: "Sabo framework",mailContent: "Ma
 
 **Focus sur le gestionnaire de template**
 
-Les gestionnaires de template extends de la class <code>SaboCore\Utils\Mailer\MailerTemplateProvider</code>
+Les gestionnaires de template extends de la class <code>EagleCore\Utils\Mailer\MailerTemplateProvider</code>
 
-Le framework en fourni deux par défaut permettant de rendre respectivement des mails à partir de templates <code>twig</code> ou <code>blade</code> ayant comme racine <code>src/views/mails</code>
+Le framework en fourni deux par défaut permettant de rendre respectivement des mails à partir de templates <code>twig</code> ou <code>blade</code> ayant comme racine <code>Src/views/mails</code>
 
-<code>SaboCore\Utils\Mailer\BladeMailProvider</code> - <code>SaboCore\Utils\Mailer\TwigMailProvider</code>
+<code>EagleCore\Utils\Mailer\BladeMailProvider</code> - <code>EagleCore\Utils\Mailer\TwigMailProvider</code>
 
 <code-block lang="php">
-$mailer = new SaboMailer();
+$mailer = new EagleMailer();
 $sendSuccess = $mailer->sendMailFromTemplate(
-    subject: "Sabo framework",
+    subject: "Eagle framework",
     recipients: ["eagle.framework@github.com"],
     templateProvider: new BladeMailProvider(
-        templatePath: "mail", # src/views/mail/mail.blade.php
+        templatePath: "mail", # Src/views/mail/mail.blade.php
         altContent: "Contenu alternatif",
         templateDatas: []
     )   
 );
 $sendSuccess = $mailer->sendMailFromTemplate(
-    subject: "Sabo framework",
+    subject: "Eagle framework",
     recipients: ["eagle.framework@github.com"],
     templateProvider: new TwigMailProvider(
-        templatePath: "mail.twig", # src/views/mail/mail.twig
+        templatePath: "mail.twig", # Src/views/mail/mail.twig
         altContent: "Contenu alternatif",
         templateDatas: []
     )   

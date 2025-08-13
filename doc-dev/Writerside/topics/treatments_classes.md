@@ -26,7 +26,7 @@ controller_action -> result_render
 
 ## Utilisation
 
-Les class de traitement se situent par défaut dans <code>src/treatment</code> et peuvent étendre de la classe <code>CustomTreatment</code>.
+Les class de traitement se situent par défaut dans <code>Src/Treatment</code> et peuvent étendre de la classe <code>CustomTreatment</code>.
 
 <note>La logique recommandée est de fonctionner par renvoi d'exceptions pour marquer une erreur</note>
 
@@ -43,8 +43,8 @@ class MyController{
         }
         catch(TreatmentException $e){
             $request
-                ->getSessionStorage()
-                ->storeFlash(storeKey: "contact.error",toStore: $e->getErrorMessage());
+                ->sessionStorage
+                ->storeFlash(storeKey: "contact.error",toStore: $e->errorMessage);
             return new RedirectResponse(route(requestMethod: "get",routeName: "contact.page"));
         }
     }

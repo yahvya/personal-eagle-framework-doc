@@ -4,38 +4,41 @@
 
 ## Configuration de la base de données
 
-La configuration de la base de données se base sur le fichier d'environnement <code>src/configs/env.php</code> au niveau de <code>// configuration de la base de données</code>.
+La configuration de la base de données se base sur le fichier d'environnement <code>configs/env.php</code> au niveau de <code>// configuration de la base de données</code>.
 
 - Mettre le booléen d'initialisation à <code>true</code>, permet de spécifier à l'étape de routing de lancer la gestion de la base de données
-- Spécifier le provider, une class qui extends de <code>SaboCore\Database\Default\Provider\DatabaseProvider</code> (par défaut <code>MysqlProvider</code>) permet d'avoir une class pouvant se charger d'initialiser les outils requis.
+- Spécifier le provider, une class qui extends de <code>EagleCore\Database\Default\Provider\DatabaseProvider</code> (par défaut <code>MysqlProvider</code>) permet d'avoir une class pouvant se charger d'initialiser les outils requis.
 - Spécifier les données de connexion
 
 ## Les models
 
 > Un model dans le contexte de *eagle* est une class permettant de représenter sous forme de code PHP une table / une vue de la base de données. Cette description passe via une [liste d'attributs](#les-attributs-de-description).
 
-Les models sont chargés par défaut dans le dossier <code>src/models</code> et extends de la class <code>CustomModel</code> servant d'intermédiaire avec le framework.
+Les models sont chargés par défaut dans le dossier <code>Src/Models</code> et extends de la class <code>CustomModel</code> servant d'intermédiaire avec le framework.
 
 Cette class permet également de définir des méthodes personnalisées pour les models.
 
 ## Les attributs de description
 
-<note>Ces attributs servent à décrire les différents éléments de la class, afin de les associer à la base de données et se situent dans le namespace <code>SaboCore\Database\Default\Attributes</code></note>
+<note>Ces attributs servent à décrire les différents éléments de la class, afin de les associer à la base de données et se situent dans le namespace <code>EagleCore\Database\Default\Attributes</code></note>
 
 - <code>TableName</code> attribut associé à la class permettant de spécifier le nom de la table représentée
 - <code>Binary|Bool|Char|Decimal|Enum|Int|Json|Text|TinyInt|VarBinary|Varchar</code> avec comme suffixe <code>Column</code>. Ces types permettent de mapper les différentes colonnes possibles sur un type <code>Mysql</code>. *Référez-vous aux paramètres et commentaires de ces fonctions*
   <code-block lang="php">
-    use SaboCore\Database\Default\Attributes\VarcharColumn; 
+    use EagleCore\Database\Default\Attributes\VarcharColumn; 
+  
     #[VarcharColumn(columnName: "user_name",maxLen: 255,)]
     protected string $username;
   </code-block>
 - <code>TimestampColumn</code> ce type spécial du framework (bien qu'existant sur MYSQL) sert de passage pour toutes données de temps (datetime, time ...) via timestamp. Le type associé derrière est un <code>INT</code>. Un élément portant cet attribut doit utiliser le type customisé <code>Timestamp</code>.
     <code-block lang="php">
-        use SaboCore\Database\Default\Attributes\TimestampColumn;
-        use SaboCore\Database\Default\CustomDatatypes\Timestamp;
+        use EagleCore\Database\Default\Attributes\TimestampColumn;
+        use EagleCore\Database\Default\CustomDatatypes\Timestamp;
         use Override;
+  
         #[TimestampColumn(columnName: "joined_at")]
         protected Timestamp $joinedAt;
+
         #[Override]
         protected function beforeCreate(mixed $datas = []): self{
             parent::beforeCreate();
@@ -45,15 +48,17 @@ Cette class permet également de définir des méthodes personnalisées pour les
     </code-block>
     ou
     <code-block lang="php">
-        use SaboCore\Database\Default\Attributes\TimestampColumn;
-        use SaboCore\Database\Default\CustomDatatypes\Timestamp;
+        use EagleCore\Database\Default\Attributes\TimestampColumn;
+        use EagleCore\Database\Default\CustomDatatypes\Timestamp;
+  
         #[TimestampColumn(columnName: "joined_at")]
         protected Timestamp $joinedAt = new Timestamp();
     </code-block>
-- <code>JoinedColumn</code> ce type spécial permet de représenter une jointure entre deux tables. Un élément portant cet attribut doit être associé au type <code>SaboList</code> des utilitaires qui contiendra la liste des éléments associés.
+- <code>JoinedColumn</code> ce type spécial permet de représenter une jointure entre deux tables. Un élément portant cet attribut doit être associé au type <code>EagleList</code> des utilitaires qui contiendra la liste des éléments associés.
     <code-block lang="php">
-        use SaboCore\Database\Default\Attributes\JoinedColumn;
-        use SaboCore\Database\Default\CustomDatatypes\JoinedList;
+        use EagleCore\Database\Default\Attributes\JoinedColumn;
+        use EagleCore\Database\Default\CustomDatatypes\JoinedList;
+  
         #[JoinedColumn(
             classModel: BannedUserModel::class,
             joinConfig: ["id" => "userId"]
@@ -66,13 +71,13 @@ Cette class permet également de définir des méthodes personnalisées pour les
     - Le troisième paramètre <code>loadOnGeneration</code> permet de définir si les models liés doivent être chargés automatiquement à la génération du model. *Celà permet notamment d'éviter le chargement infini entre deux models.*
         <note>Dans le cas où le chargement se veut manuel, la création d'une nouvelle instance <code>new JoinedColumn()->loadContent()</code>.</note>
 
-<note>Pour créer un nouvel attribut il vous faut créer une class qui extends de <code>SaboCore\Database\Default\Attributes\TableColumn</code> dont les méthodes et le constructeur peuvent être redéfinies au besoin. Se baser sur un type existant est recommandé.</note>
+<note>Pour créer un nouvel attribut il vous faut créer une class qui extends de <code>EagleCore\Database\Default\Attributes\TableColumn</code> dont les méthodes et le constructeur peuvent être redéfinies au besoin. Se baser sur un type existant est recommandé.</note>
   
 ## Les conditions d'affectation
 
 > Les conditions d'affectation permettent d'ajouter des barrières à passer lors de l'affectation d'une valeur sur un attribut lié à une colonne. Ces conditions peuvent être posées via chaque attribut de description. Elles doivent toutes être validées afin que l'affection opère. À l'échec d'une condition une exception est levée avec le message d'erreur associé.
 
-Les conditions par défaut se situent dans le namespace <code>SaboCore\Database\Default\Conditions</code>.
+Les conditions par défaut se situent dans le namespace <code>EagleCore\Database\Default\Conditions</code>.
 
 - <code>RegexCond</code> permet d'associer une regex pour valider la donnée fournie.
 - <code>LenCond</code> permet d'associer une limitation en taille sur une donnée de type <code>chaine</code>.
@@ -82,18 +87,18 @@ Les conditions par défaut se situent dans le namespace <code>SaboCore\Database\
 - <code>DatetimeCond</code> vérifie que la chaine fournie est une <code>Datetime</code> correcte.
 - <code>CallableCond</code> permet d'appeler une condition encapsulée dans une méthode statique
 
-<note>Pour créer une nouvelle condition personnalisée, veuillez créer une class implémentant l'interface <code>SaboCore\Database\Default\Conditions\Cond</code>.</note>
+<note>Pour créer une nouvelle condition personnalisée, veuillez créer une class implémentant l'interface <code>EagleCore\Database\Default\Conditions\Cond</code>.</note>
 
 ## Les utilitaires de formatage de données
 
 > Le formatage de donnée permet d'ajouter une couche d'abstraction entre le format fourni et récupéré. Les utilitaires de formatage bien qu'ayant la même structure se distinguent en deux groupes : ***reformer*** groupe qui permet à partir de la donnée stockée de formater à la récupération, ***formater*** formater une donnée avant de la stocker dans l'attribut. Ces conditions peuvent être posées via chaque attribut de description.
 
-Les 'formater' par défaut se trouvent dans le namespace <code>SaboCore\Database\Default\Formatters</code>.
+Les 'formater' par défaut se trouvent dans le namespace <code>EagleCore\Database\Default\Formatters</code>.
 
 - <code>JsonFormatter</code> formate un tableau en chaine json pour le stockage en base de données.
 - <code>JsonReformer</code> reformate une chaine json formatée en tableau.  
 
-<note>Pour créer un nouveau formater, veuillez créer une class implémentant l'interface <code>SaboCore\Database\Default\Formatters\Formater</code></note>
+<note>Pour créer un nouveau formater, veuillez créer une class implémentant l'interface <code>EagleCore\Database\Default\Formatters\Formater</code></note>
 
 ## Les types personnalisés
 
@@ -109,7 +114,7 @@ Les 'formater' par défaut se trouvent dans le namespace <code>SaboCore\Database
 > Les hooks sont des méthodes appellés à des moments précis du cycle de vie d'un model (des évènements). Redéfinir ces méthodes permet d'intercepter et d'effectuer les actions à l'appel de ces évènements. 
 <warning>Pensez à appeler les méthodes parentes, lors des redéfinitions <code>parent::beforeCreate();</code></warning>
 
-L'énumération <code>SaboCore\Database\System\DatabaseActions</code> liste les hooks implémentées par les systèmes.
+L'énumération <code>EagleCore\Database\System\DatabaseActions</code> liste les hooks implémentées par les systèmes.
 
 - <code>[before|after]Create</code> actions pre et post création
 - <code>[before|after]Update</code> actions pre et post mise à jour
@@ -155,6 +160,7 @@ L'énumération <code>SaboCore\Database\System\DatabaseActions</code> liste les 
 
 <code-block lang="php">
 &lt;?php
-use SaboCore\Database\Default\System\MysqlTableCreator;
+use EagleCore\Database\Default\System\MysqlTableCreator;
+
 echo MysqlTableCreator::getTableCreationFrom(model: new YourModelInstance);
 </code-block>

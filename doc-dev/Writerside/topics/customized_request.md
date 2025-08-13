@@ -4,11 +4,12 @@
 
 ## MysqlQueryBuilder
 
-L'utilitaire principale, le constructeur de requête <code>SaboCore\Database\Default\QueryBuilder\MysqlQueryBuilder</code>
+L'utilitaire principale, le constructeur de requête <code>EagleCore\Database\Default\QueryBuilder\MysqlQueryBuilder</code>
 
 <code-block lang="php">
 &lt;?php
-use SaboCore\Database\Default\QueryBuilder\MysqlQueryBuilder;
+use EagleCore\Database\Default\QueryBuilder\MysqlQueryBuilder;
+
 MysqlQueryBuilder::createFrom(modelClass: YourModel::class);
 </code-block>
 

@@ -1,12 +1,12 @@
-# Framework Sabo
+# Eagle Framework
 
 <img 
     src="framework-icon.ico" 
-    alt="Sabo"
+    alt="Eagle"
     width="70"
 />
 
-> Eagle est un **framework *PHP*** designé pour ressentir le fait d'écrire du PHP malgré l'utilisation d'un Framework.
+> Eagle est un **framework *PHP** designé pour ressentir le fait d'écrire du PHP malgré l'utilisation d'un Framework.
 >
 
 <warning>Une nouvelle version de la documentation est en cours de rédaction, dû aux changements effectués sur le framework.</warning>
